@@ -14,12 +14,14 @@ import { NewLedger } from './pages/NewLedger';
 import { LedgerDetail } from './pages/LedgerDetail';
 import { LedgerPreview } from './pages/LedgerPreview';
 import { InstallPrompt } from './components/pwa/InstallPrompt';
+import { UpdatePrompt } from './components/pwa/UpdatePrompt';
 
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
         <InstallPrompt />
+        <UpdatePrompt />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
