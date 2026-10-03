@@ -241,6 +241,41 @@ export const LedgerDetail = () => {
               <span className="font-medium text-dark block truncate" title={ledger.description}>{ledger.description || '-'}</span>
             </div>
           </div>
+          
+          {(ledger.gst_no || ledger.email || ledger.phone || ledger.state || ledger.address) && (
+            <div className="mt-6 pt-6 border-t border-gray-200/60 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-4 gap-x-6 text-sm">
+              {ledger.gst_no && (
+                <div>
+                  <span className="block text-gray-500 mb-1">GST Number</span>
+                  <span className="font-medium text-dark uppercase">{ledger.gst_no}</span>
+                </div>
+              )}
+              {ledger.email && (
+                <div>
+                  <span className="block text-gray-500 mb-1">Email</span>
+                  <span className="font-medium text-dark">{ledger.email}</span>
+                </div>
+              )}
+              {ledger.phone && (
+                <div>
+                  <span className="block text-gray-500 mb-1">Phone</span>
+                  <span className="font-medium text-dark">{ledger.phone}</span>
+                </div>
+              )}
+              {ledger.state && (
+                <div>
+                  <span className="block text-gray-500 mb-1">State</span>
+                  <span className="font-medium text-dark">{ledger.state}</span>
+                </div>
+              )}
+              {ledger.address && (
+                <div className="sm:col-span-2">
+                  <span className="block text-gray-500 mb-1">Address</span>
+                  <span className="font-medium text-dark block truncate" title={ledger.address}>{ledger.address}</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 

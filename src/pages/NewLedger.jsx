@@ -16,7 +16,12 @@ export const NewLedger = () => {
     opening_balance_type: 'Debit',
     currency: 'INR (₹)',
     description: '',
-    status: 'Active'
+    status: 'Active',
+    gst_no: '',
+    email: '',
+    phone: '',
+    address: '',
+    state: ''
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -63,7 +68,12 @@ export const NewLedger = () => {
           opening_balance_type: formData.opening_balance_type,
           currency: formData.currency,
           description: formData.description.trim() || null,
-          status: formData.status
+          status: formData.status,
+          gst_no: formData.gst_no.trim() || null,
+          email: formData.email.trim() || null,
+          phone: formData.phone.trim() || null,
+          address: formData.address.trim() || null,
+          state: formData.state.trim() || null
         }])
         .select()
         .single();
@@ -187,6 +197,34 @@ export const NewLedger = () => {
                 <option value="Active">Active</option>
                 <option value="Archived">Archived</option>
               </select>
+            </div>
+            
+          </div>
+            
+            <div className="md:col-span-2 pt-6 border-t border-gray-100">
+              <h3 className="text-lg font-semibold text-dark mb-4">Contact & Tax Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">GST Number</label>
+                  <input type="text" name="gst_no" className="input-field uppercase" placeholder="e.g. 29ABCDE1234F1Z5" value={formData.gst_no} onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
+                  <input type="text" name="state" className="input-field" placeholder="e.g. Karnataka" value={formData.state} onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input type="email" name="email" className="input-field" placeholder="client@example.com" value={formData.email} onChange={handleChange} />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                  <input type="tel" name="phone" className="input-field" placeholder="+91 9876543210" value={formData.phone} onChange={handleChange} />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                  <textarea name="address" rows="2" className="input-field" placeholder="Complete address" value={formData.address} onChange={handleChange}></textarea>
+                </div>
+              </div>
             </div>
 
             <div className="md:col-span-2">
