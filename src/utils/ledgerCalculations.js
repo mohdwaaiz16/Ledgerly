@@ -42,8 +42,8 @@ export const getBalanceDirection = (balance, ledger = null) => {
   }
 };
 
-export const formatCurrencyWithDirection = (amount, direction) => {
-  return `${formatCurrency(Math.abs(amount))} ${direction}`;
+export const formatCurrencyWithDirection = (amount) => {
+  return formatCurrency(amount);
 };
 
 export const formatCurrency = (amount) => {

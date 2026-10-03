@@ -54,6 +54,10 @@ export const LedgerDocument = ({ company, ledger, transactions }) => {
           </View>
           <View style={styles.ledgerInfo}>
             <Text style={styles.ledgerTitle}>{ledger?.ledger_name || 'Ledger'}</Text>
+            {ledger?.address && <Text style={styles.ledgerDates}>{ledger.address}</Text>}
+            {ledger?.gst_no && <Text style={styles.ledgerDates}>GSTIN: {ledger.gst_no.toUpperCase()}</Text>}
+            {ledger?.email && <Text style={styles.ledgerDates}>Email: {ledger.email}</Text>}
+            {ledger?.phone && <Text style={styles.ledgerDates}>Phone: {ledger.phone}</Text>}
             <Text style={styles.ledgerDates}>
               {ledger?.ledger_type || 'General'} Ledger
             </Text>
