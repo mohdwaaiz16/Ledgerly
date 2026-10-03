@@ -238,8 +238,8 @@ export const NewLedger = () => {
                 placeholder="Current account used for business receipts and payments."
               />
             </div>
-          </div>
           
+
           <div className="pt-6 border-t border-gray-100 flex justify-end space-x-4">
             <button type="button" onClick={() => navigate('/ledgers')} className="btn-secondary">
               Cancel
