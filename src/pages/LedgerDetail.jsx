@@ -7,6 +7,16 @@ import { TransactionForm } from '../components/transaction/TransactionForm';
 import { TransactionParserPreview } from '../components/transaction/TransactionParserPreview';
 import { EditLedgerForm } from '../components/ledger/EditLedgerForm';
 
+const formatDate = (dateString) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  if (isNaN(date)) return dateString;
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}-${month}-${year}`;
+};
+
 export const LedgerDetail = () => {
   const { ledgerId } = useParams();
   const navigate = useNavigate();
@@ -211,7 +221,7 @@ export const LedgerDetail = () => {
             <div>
               <span className="block text-gray-500 mb-1">Period</span>
               <span className="font-medium text-dark">
-                {ledger.from_date && ledger.to_date ? `${ledger.from_date} to ${ledger.to_date}` : 'All time'}
+                {ledger.from_date && ledger.to_date ? `${formatDate(ledger.from_date)} to ${formatDate(ledger.to_date)}` : 'All time'}
               </span>
             </div>
             <div>
@@ -287,7 +297,7 @@ export const LedgerDetail = () => {
               ) : (
                 transactions.map((t) => (
                   <tr key={t.id} className="hover:bg-gray-50/50">
-                    <td className="px-6 py-4 text-gray-600">{t.transaction_date}</td>
+                    <td className="px-6 py-4 text-gray-600">{formatDate(t.transaction_date)}</td>
                     <td className="px-6 py-4 font-medium text-dark max-w-[300px] truncate" title={t.particulars}>{t.particulars}</td>
                     <td className="px-6 py-4 text-gray-600">{t.voucher_type}</td>
                     <td className="px-6 py-4 text-gray-600">{t.voucher_number}</td>

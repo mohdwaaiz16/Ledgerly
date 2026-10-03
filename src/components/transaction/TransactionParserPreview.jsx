@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { parseTransactions } from '../../utils/transactionParser';
 
+const formatDate = (dateString) => {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  if (isNaN(date)) return dateString;
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}-${month}-${year}`;
+};
+
 export const TransactionParserPreview = ({ onConfirm, onCancel }) => {
   const [text, setText] = useState('');
   const [parsedResult, setParsedResult] = useState(null);
@@ -71,7 +81,7 @@ export const TransactionParserPreview = ({ onConfirm, onCancel }) => {
                     parsedResult.transactions.map((t, idx) => (
                       <tr key={idx} className="hover:bg-gray-50/50">
                         <td className="px-4 py-3 text-green-600 font-medium">Ready</td>
-                        <td className="px-4 py-3">{t.transaction_date}</td>
+                        <td className="px-4 py-3">{formatDate(t.transaction_date)}</td>
                         <td className="px-4 py-3">{t.particulars}</td>
                         <td className="px-4 py-3">{t.voucher_type}</td>
                         <td className="px-4 py-3">{t.voucher_number}</td>
