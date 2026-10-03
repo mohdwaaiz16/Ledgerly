@@ -162,11 +162,10 @@ export const LedgerDetail = () => {
   const balanceDirection = getBalanceDirection(balance, ledger);
 
   const formattedOpening = formatCurrencyWithDirection(
-    ledger.opening_balance || 0,
-    ledger.opening_balance_type === 'Credit' ? 'Cr' : 'Dr'
+    ledger.opening_balance || 0
   );
   
-  const formattedClosing = formatCurrencyWithDirection(balance, balanceDirection);
+  const formattedClosing = formatCurrencyWithDirection(balance);
 
   return (
     <div className="max-w-6xl mx-auto space-y-8 pb-12">

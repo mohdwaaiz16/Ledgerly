@@ -21,11 +21,10 @@ export const LedgerDocument = ({ company, ledger, transactions }) => {
   const balanceDirection = getBalanceDirection(balance, ledger);
   
   const formattedOpening = formatCurrencyWithDirection(
-    ledger?.opening_balance || 0,
-    ledger?.opening_balance_type === 'Credit' ? 'Cr' : 'Dr'
+    ledger?.opening_balance || 0
   );
   
-  const formattedClosing = formatCurrencyWithDirection(balance, balanceDirection);
+  const formattedClosing = formatCurrencyWithDirection(balance);
 
   const getPeriodText = () => {
     if (ledger?.from_date && ledger?.to_date) {
